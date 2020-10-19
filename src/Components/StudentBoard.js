@@ -2,7 +2,7 @@ import React ,{Component} from "react";
 import { Container } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import {getAllStudents} from "../utils/utils";
-import StudentContainer from "./StudentContainer";
+import StudentContainer from "../Containers/StudentContainer";
 
 
 class StudentBoard extends Component{
