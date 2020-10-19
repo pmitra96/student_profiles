@@ -3,7 +3,7 @@ import { Container } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import {getAllStudents} from "../utils/utils";
 import StudentContainer from "../Containers/StudentContainer";
-
+import _ from "lodash";
 
 class StudentBoard extends Component{
 
@@ -26,6 +26,23 @@ class StudentBoard extends Component{
           });
       }
     
+    addNewTag = (email,tags) => {
+        console.log("add new tag",email,tags)
+        const StudentsAfterTagUpdate = this.modifyStateWithTags(this.state.AllStudents,email,tags)
+        this.setState({ AllStudents : StudentsAfterTagUpdate })
+    }
+
+    modifyStateWithTags = (students,email,tags) =>
+    {
+        var newStudents = _.cloneDeep(students)
+        for(var i =0 ; i  < newStudents.length;i++){
+            if (newStudents[i].email === email){
+                newStudents[i]["tags"] = tags
+            }
+        }
+        return newStudents;
+    }
+    
     editSearchTerm = (e) => {
     this.setState({searchKey: e.target.value})
     };
@@ -42,6 +59,9 @@ class StudentBoard extends Component{
             || 
             student.lastName.toLowerCase().includes(searchKey.toLowerCase())
         )
+
+    
+
         console.log("filtered students")
         console.log(filteredStudents)
          return filteredStudents;
@@ -57,7 +77,7 @@ class StudentBoard extends Component{
                 value = {this.state.searchKey}
                 id="standard-full-width"
                 style={{ margin: 8 }}
-                placeholder="Placeholder"
+                placeholder="enter student firstName or lastName"
                 fullWidth
                 margin="normal"
                 onChange = {this.editSearchTerm}
@@ -69,7 +89,7 @@ class StudentBoard extends Component{
                     this.state.loading
                         ?
                         <p > loading</p>
-                        :<StudentContainer students = {this.dynamicSearch()}/>
+                        :<StudentContainer addNewTag = {this.addNewTag} students = {this.dynamicSearch()}/>
                         
               }
               </Container>

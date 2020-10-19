@@ -12,8 +12,9 @@ class StudentContainer extends Component {
                 { firstName, lastName, email, company, skill, grades, pic },
                 idx
               ) => (
-                <ListItem xs={12} sm={6} md={3}>
+                <ListItem key={idx + 1} xs={12} sm={6} md={3}>
                   <StudentCard
+                    addNewTag = {this.props.addNewTag}
                     key={idx + 1}
                     firstName={firstName}
                     lastName={lastName}

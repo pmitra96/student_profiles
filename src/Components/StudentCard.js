@@ -48,6 +48,8 @@ class StudentCard extends Component {
       let tags = this.state.tags;
       tags.push(this.state.currentTag);
       this.setState({ currentTag: "", tags: tags });
+      console.log(this.props)
+      this.props.addNewTag(this.state.email,tags);
     }
   };
 
