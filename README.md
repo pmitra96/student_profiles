@@ -7,14 +7,15 @@
 - search students using tags
 - search students using first name or last name
 
-
-## Available Scripts
-In the project directory, you can run:
-
-
 ### to install dependencies 
 - `cd student_profiles`
 - `npm install`
+
+### to run the app 
+- `npm start`
+
+
+## available scripts
 
 ### `npm start`
 after installing the dependencies 
