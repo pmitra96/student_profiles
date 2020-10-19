@@ -88,9 +88,15 @@ class StudentCard extends Component {
                 </p>
               );
             })}
+            {
+                this.state.tags.length === 0 ?
             <Button variant="contained" onClick={this.addNewTag}>
               New Tag
+            </Button>:
+            <Button variant="contained" onClick={this.addNewTag}>
+                Another tag
             </Button>
+            }
             <TextField
               value={this.state.currentTag}
               style={{ margin: 8 }}

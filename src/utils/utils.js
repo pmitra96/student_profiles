@@ -12,6 +12,20 @@ export const getAllStudents = () => {
     return fetch("https://www.hatchways.io/api/assessment/students")
 }
 
+export const doesContainTag = (tags,tagKey) => 
+{
 
-
+    if (tags !== undefined){
+        console.log(tags,tagKey)
+    for(var i=0;i<tags.length;i++){
+        if (tags[i].toLowerCase().includes(tagKey.toLowerCase())){
+            console.log("returning true")
+            return true 
+        }
+    }
+    return false}
+    else{
+        return false
+    }
+}
 
